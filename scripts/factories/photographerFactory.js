@@ -14,13 +14,14 @@ function photographerFactory(data) {
         const pPrice = document.createElement('p');
 
         img.setAttribute("src", picture)
+        img.setAttribute("alt", " ")
         
         h2.textContent = name;
-
-        articleLink.setAttribute("href", '#');
-        articleLink.appendChild(img);
-        articleLink.appendChild(h2);
         
+        articleLink.setAttribute("href", `photographer.html?id=${id}`);
+        articleLink.setAttribute("aria-label", "galerie de " + name);
+        articleLink.append(img, h2)
+
         h3.textContent = city + ", " + country;
         
         pTagline.textContent = tagline;
@@ -28,10 +29,8 @@ function photographerFactory(data) {
         pPrice.textContent = price + '€/jour';
         pPrice.className = 'price';
 
-        article.appendChild(articleLink);
-        article.appendChild(h3);
-        article.appendChild(pTagline);
-        article.appendChild(pPrice);
+        article.append(articleLink, h3, pTagline, pPrice);
+        
         return (article);
     }
     return { name, picture, city, country, tagline, price, id, getUserCardDOM }
