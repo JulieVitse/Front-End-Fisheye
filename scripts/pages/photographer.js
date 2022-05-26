@@ -22,8 +22,13 @@ async function photographerData(photographers) {
         const photographerModel = galleryFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographHeader.appendChild(userCardDOM);
+
+        const contactName = document.querySelector('h2');      
+        contactName.innerHTML += '<br>' + photographer.name;
         }
         console.log(photographer.id)
+
+        
     });
 };
 

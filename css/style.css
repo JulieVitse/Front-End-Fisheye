@@ -36,8 +36,11 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 3rem;
+    pointer-events: none;
 }
-
+.photographer_section > * img{
+    pointer-events: auto;
+}
 .photographer_section article {
     justify-self: center;
     display: flex;
@@ -53,37 +56,42 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all .5s ease;
 }
 
-.photographer_section article a:hover img{
+.photographer_section:hover > * img{
+    opacity: .5;
+}
+.photographer_section:hover > *:hover img{
     transform: scale(1.1);
+    opacity: 1;
 }
-
-.photographer_section article a img {
+/* .photographer_section article a:hover img{
+    transform: scale(1.1);
+} */
+.photographer-picture {
     height: 200px;
     width: 200px;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 12px var(--color-shadow);
-    transition: transform .5s ease;
+    transition: all .5s ease;
 }
 
-.photographer_section article a h2 {
+.photographer-name {
     color: var(--color-secondary);
     font-size: 36px;
     font-weight: normal;
     margin: 1rem 0 .5rem 0;
 }
 
-.photographer_section article h3 {
+.photographer-location {
     color: var(--color-primary);
     font-size: 13px;
     font-weight: normal;
     margin: 0;
 }
 
-.photographer_section article p{
+.photographer-tagline{
     margin: .2rem 0;
     font-size: 10px;
 }

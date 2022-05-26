@@ -15,16 +15,20 @@ function photographerFactory(data) {
 
         img.setAttribute("src", picture)
         img.setAttribute("alt", " ")
+        img.className = "photographer-picture"
         
         h2.textContent = name;
+        h2.className = "photographer-name"
         
         articleLink.setAttribute("href", `photographer.html?id=${id}`);
         articleLink.setAttribute("aria-label", "galerie de " + name);
         articleLink.append(img, h2)
 
         h3.textContent = city + ", " + country;
+        h3.className = "photographer-location"
         
         pTagline.textContent = tagline;
+        pTagline.className = "photographer-tagline"
         
         pPrice.textContent = price + '€/jour';
         pPrice.className = 'price';
