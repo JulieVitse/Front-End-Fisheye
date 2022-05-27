@@ -1,9 +1,15 @@
-function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+const main = document.querySelector('main');
+const header = document.querySelector('header');
+const modal = document.getElementById("contact_modal");
+
+function displayModal() {    
+    modal.classList.add('modal-open');
+    main.classList.add('fade-out');
+    header.classList.add('fade-out');
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    modal.classList.remove('modal-open');
+    main.classList.remove('fade-out');
+    header.classList.remove('fade-out');
 }

@@ -5,13 +5,25 @@
 }
 
 #contact_modal {
-    display: none;
-    display: none;
     position: absolute;
     width: 60%;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    opacity: 0;
+    visibility: collapse;
+    transition: all .5s ease;
+}
+
+#contact_modal.modal-open{
+    opacity: 1;
+    visibility: visible;
+    transition: all .5s ease;
+}
+
+.fade-out{
+    opacity: .5;
+    transition: all .5s ease;
 }
 
 .photograph-header {
@@ -83,6 +95,7 @@
     font-weight: normal;
     text-align: left;
     margin: 0;
+    white-space: nowrap;
 }
 
 form {
