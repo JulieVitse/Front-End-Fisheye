@@ -7,6 +7,7 @@
 *{
     box-sizing: border-box;
     margin: 0;
+    list-style: none;
 }
 /* ------------------------------- FORM MODAL ------------------------------- */
 #contact_modal {
@@ -74,97 +75,39 @@
     background-color: var(--color-secondary);
 } */
 
-#sort-media {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  border: none;
-  padding: 0;
-  position: relative;
-  font-family: "DM Sans", sans-serif;
-  font-weight: bold;
-  font-size: 16px;
+#sort-media-btn {
+    border: none;
+    padding: 0;
+    position: relative;
+    height: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 1rem;
 }
-.sort-label{
-    margin: .5rem 1rem 0 0;
+#sort-media-btn::after{
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
 }
-
-
-/* Input styling */
-
-.input {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  color: white;
-  border-radius: 5px;
-  height: 60px;
-  width: 170px;
-  padding: .5rem;
-  background-color: var(--color-primary);
+#sort-list{
+    position: absolute;
+    width: 170px;
+    background-color: var(--color-primary);
+    color: white;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 0;
+    padding: 0;
+    transform: translateY(-5px);
+    margin-left: 1rem;
 }
-
-.input__active {
-  border-color: var(--color-secondary);
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
+#sort-list>li{
+    padding: 1rem;
+    font-size: 20px;
 }
-
-.placeholder {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  color: white;
-}
-
-.input:hover {
-  cursor: pointer;
-}
-
-.input__selected {
-  color: white;
-}
-
-/* Dropdown styling */
-
-.select-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: auto;
-  background-color: var(--color-primary);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  width: 100%;
-  padding: 0 .5rem;
-  box-sizing: border-box;
-}
-
-.select-list>p {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 1rem 0;
-  color: white;
-  margin: 0;
-  border-bottom: 1px solid white;
-}
-
-.select-list>p:last-child{
-    border-bottom: none;
-}
-
-.select-list>p:hover {
-  background-color: var(--color-secondary);
-  color: white;
-  cursor: pointer;
-}
-.hide {
-  display: none;
+.hidden{
+    display: none;
 }
 /* --------------------------------- MEDIAS --------------------------------- */
 .media-wrapper{
