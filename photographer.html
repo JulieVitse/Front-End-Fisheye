@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> <!-- icons -->  
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
     <title>Fisheye - photographe </title>
   </head>
 
@@ -18,6 +19,22 @@
     <main id="main">
       <section class="photograph-header">
         <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
+      </section>
+
+      <section class="photographer-gallery">
+        <div class="wrapper sort-wrapper">
+          <h4 class="sort-label">Trier par</h4>
+          <button id='sort-media'></button>
+            <!-- <label for="sort-media">Trier par</label>
+              <select name="sort-media" id="sort-media" class="sort-media btn">
+                <option class="sort-option" value="popularity">Popularité</option>
+                <option class="sort-option" value="date">Date</option>
+                <option class="sort-option" value="title">Titre</option>
+              </select> -->
+        </div>
+
+        <div class="wrapper media-wrapper"></div>
+          
       </section>
     </main>
 
@@ -50,16 +67,17 @@
             <textarea name="message" id="message" rows="10"></textarea>
           </div>
 
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button btn">Envoyer</button>
 				</form>
         
 			</div>
 		</div>
 
     <!-- <script src="/scripts/factories/galleryFactory.js"></script> -->
+    <script src="/scripts/pages/photographer.js"></script>
+    <script src="scripts/utils/sortComponent.js"></script>
     <script src="/scripts/utils/api.js"></script>
     <script src="/scripts/factories/photographerFactory.js"></script>
-    <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
