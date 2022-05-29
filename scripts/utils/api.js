@@ -11,8 +11,9 @@ async function getPhotographers() {
 }
 
 async function getMedias() {
-    const response = await fetch("../data/photographers.json")
+    const response = await fetch("./data/photographers.json")
     const data = await response.json();
+    
     return ({
         medias: data.media
     })

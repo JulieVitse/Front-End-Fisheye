@@ -23,17 +23,18 @@
 
       <section class="photographer-gallery">
         <div class="wrapper sort-wrapper">
-          <h4 class="sort-label">Trier par</h4>
-          <button id='sort-media'></button>
-            <!-- <label for="sort-media">Trier par</label>
+          <!-- <h4 class="sort-label">Trier par</h4> -->
+          <!-- <button id='sort-media'></button> -->
+            <label for="sort-media" class="sort-label">Trier par</label>
               <select name="sort-media" id="sort-media" class="sort-media btn">
                 <option class="sort-option" value="popularity">Popularité</option>
                 <option class="sort-option" value="date">Date</option>
                 <option class="sort-option" value="title">Titre</option>
-              </select> -->
+              </select>
         </div>
 
-        <div class="wrapper media-wrapper"></div>
+        <div class="wrapper media-wrapper">
+        </div>
           
       </section>
     </main>
@@ -74,9 +75,10 @@
 		</div>
 
     <!-- <script src="/scripts/factories/galleryFactory.js"></script> -->
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/sortComponent.js"></script>
+    <!-- <script src="scripts/utils/sortComponent.js"></script> -->
     <script src="/scripts/utils/api.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/factories/photographerFactory.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>

@@ -1,6 +1,7 @@
 //Mettre le code JavaScript lié à la page photographer.html
 const id = (new URL(document.location)).searchParams.get('id');
 
+
 async function displayData(photographers) {
     const photographHeader = document.querySelector(".photograph-header");
 
@@ -27,11 +28,14 @@ async function displayMedias(medias) {
     const mediaGallery = document.querySelector('.media-wrapper');
     medias.forEach((media) => {
         if(media.photographerId == id) {
-            
+            const galleryModel = mediaFactory(media);
+            const mediaCardDOM = galleryModel.getMediaCardDOM();
+            mediaGallery.appendChild(mediaCardDOM);
+        } else {
+            console.log('error');
         }
-
     })
-}
+} 
 /* const sortButton = document.querySelector('.sort-media.btn');
 const sortOptions = document.querySelectorAll('.sort-option');
 const sortIcon = document.querySelector('.sort-arrow');
