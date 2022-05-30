@@ -1,8 +1,7 @@
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
-    const response = await fetch('./data/photographers.json');
+    const response = await fetch('../../data/photographers.json');
     const data = await response.json();
-    console.log(data)
     
     // et bien retourner le tableau photographers seulement une fois
     return ({
@@ -11,7 +10,7 @@ async function getPhotographers() {
 }
 
 async function getMedias() {
-    const response = await fetch("./data/photographers.json")
+    const response = await fetch("../../data/photographers.json")
     const data = await response.json();
     
     return ({
@@ -24,9 +23,7 @@ async function init() {
     const { photographers } = await getPhotographers();
     const { medias } = await getMedias();
     displayData(photographers);
-    displayMedias(medias);
-    console.log(medias)
-    
+    displayMedias(medias); 
 };
 
 init();
