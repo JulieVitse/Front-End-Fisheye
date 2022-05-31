@@ -1,8 +1,14 @@
 function mediaFactory(data) {
-    const { photographerId, title, image, video, likes } = data;
-
-    const picture = `/assets/medias/${image}`;
-    const videos = `/assets/medias/${video}`;
+    const { photographerId, title, likes, ...rest } = data;
+    console.log(rest);
+    let urlMedia;
+    if (data.video){
+        urlMedia = data.video;
+    } else {
+        urlMedia = data.image;
+    }
+    const fullUrl = `/assets/medias/${urlMedia}`;
+    // const videos = `/assets/medias/${video}`;
 
     function getMediaCardDOM() {
         const figure = document.createElement('figure');
@@ -12,13 +18,11 @@ function mediaFactory(data) {
         const likeIcon = document.createElement('i');
         const videoMedia = document.createElement('video');
 
-        videoMedia.setAttribute("src", videos);
-        videoMedia.setAttribute("controls", true);
+        videoMedia.setAttribute("src", fullUrl);
         videoMedia.setAttribute("type", "video/mp4");
         videoMedia.className = "gallery-vid";
         
-        
-        img.setAttribute("src", picture);
+        img.setAttribute("src", fullUrl);
         img.setAttribute("alt", title);
         img.className = "gallery-img";
 
@@ -30,10 +34,10 @@ function mediaFactory(data) {
         figcaption.textContent = title;
         figcaption.append(spanLikes);
         
-        if (image){
+        if (data.image){
             figure.append(img, figcaption);
             return (figure);
-        } else if (video){
+        } else if (data.video){
             figure.append(videoMedia, figcaption);
             return (figure);
         } else {
@@ -41,5 +45,5 @@ function mediaFactory(data) {
         }   
     }
 
-    return { photographerId, title, image, video, picture, videos, likes, getMediaCardDOM };
+    return { photographerId, title, likes, getMediaCardDOM };
 }
