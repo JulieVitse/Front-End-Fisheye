@@ -34,7 +34,7 @@ function photographerFactory(data, type) {
         pTagline.textContent = tagline;
         pTagline.className = "photographer-tagline"
 
-        pPrice.textContent = price + '€/jour';
+        pPrice.textContent = `${price}€/jour`;
         pPrice.className = 'price';
         
         articleLink.setAttribute("href", `photographer.html?id=${id}`);
