@@ -3,39 +3,38 @@ const sortList = document.getElementById('sort-list');
 const sortOption = document.querySelectorAll('li');
 
 function showSortList() {
-    sortList.classList.remove('hidden');
-    sortButton.setAttribute('aria-expanded', 'true');
+    sortList.classList.toggle('hidden');
+    //sortButton.setAttribute('aria-expanded', 'true');
+    sortButton.classList.toggle('clicked');
+    if(sortList.classList.contains('hidden')){
+      sortButton.setAttribute('aria-expanded', 'false');
+    } else {
+      sortButton.setAttribute('aria-expanded', 'true');
+    }
     //sortList.sortListNode.focus();
 }
 
 function closeSortList() {
   sortList.classList.add('hidden');
   sortButton.setAttribute('aria-expanded', 'false');
+  sortButton.classList.remove('clicked');
   //sortList.sortListNode.focus();
 }
 
-sortButton.addEventListener('click', function (){
+sortButton.addEventListener('click', () => {
   showSortList();
 })
 
-
-/* sortOption.forEach(option => {
-  option.addEventListener('click', () => {
-    isSelected(option);
+sortOption.forEach(option => {
+  option.addEventListener('click', (e) => {
+    for (let option of sortOption) {
+      option.classList.remove('focused');
+      option.setAttribute("aria-selected", "false");
+    }
+    e.target.classList.add('focused');
+    e.target.setAttribute("aria-selected", "true");
+    sortButton.innerText = e.target.innerText;
+    sortList.setAttribute("aria-activedescendant", e.target.id)
+    closeSortList();
   })
 })
-
-function isSelected(element) {
-  element.classList.add('focused');
-  element.setAttribute('aria-selected', 'true');
-  sortButton.innerText = element.innerText;
-}
-
-function unselect(element) {
-  if(element.nextElementSibling != null || element.previousElementSibling != null){
-  element.nextElementSibling.classList.remove('focused');
-  element.nextElementSibling.setAttribute('aria-selected', 'false');
-  element.previousElementSibling.classList.remove('focused');
-  element.previousElementSibling.setAttribute('aria-selected', 'false');
-  }
-} */

@@ -90,6 +90,9 @@
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
 }
+#sort-media-btn.clicked::after{
+    content: "\f077";
+}
 #sort-list{
     position: absolute;
     width: 170px;
@@ -98,15 +101,16 @@
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     margin: 0;
-    padding: 0;
+    padding: 0 1rem;
     transform: translateY(-5px);
     margin-left: 1rem;
 }
 #sort-list>li{
-    padding: 1rem;
+    padding: 1rem 0;
     font-size: 20px;
+    border-top: 1px solid white;
 }
-.hidden{
+.hidden, .focused{
     display: none;
 }
 /* --------------------------------- MEDIAS --------------------------------- */
