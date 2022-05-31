@@ -26,6 +26,7 @@ async function init() {
     const { medias } = await getMedias();
     displayData(photographers);
     displayMedias(medias); 
+    
 };
 
 init();

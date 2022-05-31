@@ -113,6 +113,44 @@ figcaption{
     margin-left: .3rem;
     cursor: pointer;
 }
+/* -------------------------------- LIGHTBOX -------------------------------- */
+#lightbox_modal{
+    width: 100%;
+    position: fixed;
+    background-color: #b34acd85;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#lightbox_modal.hidden{
+    display: none;
+}
+.lightbox{
+    background-color: antiquewhite;
+    width: 50%;
+    height: 70%;
+    /* margin: auto; */
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.lightbox-close{
+    display: block;
+    align-self: flex-start;
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+}
+.lightbox-item{
+    flex-basis: 90%;
+}
+.lightbox-image, .lightbox-video{
+    display: block;
+    width: 100%;
+}
 /* ------------------------------ CONTACT FORM ------------------------------ */
 #contact_modal {
     position: fixed;

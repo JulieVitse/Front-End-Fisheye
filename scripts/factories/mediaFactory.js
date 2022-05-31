@@ -1,12 +1,14 @@
 function mediaFactory(data) {
-    const { photographerId, title, likes, ...rest } = data;
-    console.log(rest);
+    const { photographerId, title, likes, id, ...rest } = data;
+
+    //console.log(rest);
     let urlMedia;
     if (data.video){
         urlMedia = data.video;
     } else {
         urlMedia = data.image;
     }
+    
     const fullUrl = `/assets/medias/${urlMedia}`;
     // const videos = `/assets/medias/${video}`;
 
@@ -20,10 +22,12 @@ function mediaFactory(data) {
 
         videoMedia.setAttribute("src", fullUrl);
         videoMedia.setAttribute("type", "video/mp4");
+        videoMedia.setAttribute("onclick", `openLightbox(${id})`);
         videoMedia.className = "gallery-vid";
         
         img.setAttribute("src", fullUrl);
         img.setAttribute("alt", title);
+        img.setAttribute("onclick", `openLightbox(${id})`);
         img.className = "gallery-img";
 
         spanLikes.textContent = likes;
@@ -42,8 +46,10 @@ function mediaFactory(data) {
             return (figure);
         } else {
             throw 'unknown type format';
-        }   
+        }    
     }
 
-    return { photographerId, title, likes, getMediaCardDOM };
+    
+
+    return { photographerId, title, likes, id, getMediaCardDOM };
 }

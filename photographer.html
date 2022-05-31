@@ -37,8 +37,17 @@
         </div>
 
         <div class="wrapper media-wrapper"></div>
-          
       </section>
+
+      <div id="lightbox_modal" aria-hidden="true" role="dialog" class="hidden">
+        <div class="lightbox">
+          <i class="fa-solid fa-xmark lightbox-close" onclick="closeLightbox()"></i>
+          <!-- <img src="assets/icons/close.svg" class="lightbox-close" onclick="closeLightbox()" /> -->
+          <i class="fa-solid fa-chevron-left"></i>
+          <!-- <figure class="lightbox-item"></figure> -->
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
     </main>
 
     <div id="contact_modal">
@@ -76,10 +85,10 @@
 			</div>
 		</div>
 
-    
+    <script src="/scripts/utils/api.js"></script>
     <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/factories/photographerFactory.js"></script>
-    <script src="/scripts/utils/api.js"></script>
+    <script src="/scripts/factories/lightboxFactory.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="scripts/utils/sortComponent.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
