@@ -1,54 +1,66 @@
-function lightboxFactory(data) {
-    const {title, id, image, video} = data;
+function createLightbox(medias, id) {
+    let photoID = medias.findIndex(media => media.id === id);
+    console.log(photoID);
 
-    //console.log(id,image);
+    function displayLightbox() {
+        //lightbox structure elements
+        const lightboxModal = document.getElementById('lightbox_modal');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxFigure = document.querySelector('.lightbox-item');
+        const mediaTitle = document.querySelector('.lightbox-item-title');
+        //mediaTitle.className = "lightbox-item-title";
+        //lightbox buttons
+        const btnPrev = document.querySelector('.btn-prev');
+        const btnNext = document.querySelector('.btn-next');
 
-    let urlMedia;
-    if (data.video){
-        urlMedia = data.video;
-    } else {
-        urlMedia = data.image;
-    }
-    
-    const fullUrl = `/assets/medias/${urlMedia}`;
+        lightbox.setAttribute("aria-label", "Aperçu du média");
+        lightboxModal.classList.remove('hidden');
+        lightboxFigure.append(mediaTitle);
 
-    function getLightbox() {
-        const lightboxFigure = document.createElement('figure');
-        lightboxFigure.className = "lightbox-item";
-
-        const lightboxClose = document.createElement('i');
-        lightboxClose.className = "fa-solid fa-xmark lightbox-close";
-        lightboxClose.setAttribute("onclick", `closeLightbox()`);
-
-        const lightBoxPrev = document.createElement('i');
-        lightBoxPrev.className = "fa-solid fa-chevron-left";
-
-        const lightBoxNext = document.createElement('i');
-        lightBoxNext.className = "fa-solid fa-chevron-right";
-
-        const img = document.createElement('img');
-        const figcaption = document.createElement('figcaption');
-        const videoMedia = document.createElement('video');
-
-        videoMedia.setAttribute("src", fullUrl);
-        videoMedia.setAttribute("type", "video/mp4");
-        videoMedia.className = "lightbox-video";
         
-        img.setAttribute("src", fullUrl);
-        img.setAttribute("alt", title);
-        img.className = "lightbox-image";
 
-        figcaption.textContent = title;
+        if (medias[photoID].image) {
+            const lightboxImage = document.createElement('img');
 
-        if (data.image){
-            lightboxFigure.append(img, figcaption);
-            return (lightboxFigure);
-        } else if (data.video){
-            lightboxFigure.append(videoMedia, figcaption);
-            return (lightboxFigure);
-        } else {
-            throw 'unknown type format';
+            lightboxImage.className = "lightbox-img";
+            lightboxImage.setAttribute("alt", `${medias[photoID].title}`);
+            lightboxImage.setAttribute("src", `../assets/medias/${medias[photoID].image}`);
+            mediaTitle.textContent = `${medias[photoID].title}`;
+
+            btnNext.addEventListener('click', () => {
+                 photoID++;
+                displayLightbox();
+            });
+            btnPrev.addEventListener('click', () => {
+                photoID--
+                displayLightbox();
+            });
+          
+            lightboxFigure.append(lightboxImage);
+
+            
+        }
+        if (medias[photoID].video) {
+            const lightboxVideo = document.createElement("video");
+    
+            lightboxVideo.className = "lightbox-video";
+            lightboxVideo.setAttribute("alt", `${medias[photoID].title}`);
+            lightboxVideo.setAttribute("src", `../assets/medias/${medias[photoID].video}`);
+            lightboxVideo.setAttribute("controls", true);
+            mediaTitle.textContent = `${medias[photoID].title}`;
+
+            btnPrev.addEventListener('click', () => {
+                photoID--;
+                displayLightbox();
+            })
+            btnNext.addEventListener('click', () => {
+                photoID++;
+                displayLightbox();
+            })
+    
+            lightboxFigure.append(lightboxVideo);
+            
         }
     }
-    return {title, id, image, video, getLightbox}  
+return { displayLightbox };
 }

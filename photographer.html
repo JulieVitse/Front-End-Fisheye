@@ -41,11 +41,15 @@
 
       <div id="lightbox_modal" aria-hidden="true" role="dialog" class="hidden">
         <div class="lightbox">
-          <i class="fa-solid fa-xmark lightbox-close" onclick="closeLightbox()"></i>
+          <i class="fa-solid fa-xmark lightbox-close lightbox-btn" onclick="closeLightbox()"></i>
           <!-- <img src="assets/icons/close.svg" class="lightbox-close" onclick="closeLightbox()" /> -->
-          <i class="fa-solid fa-chevron-left"></i>
-          <!-- <figure class="lightbox-item"></figure> -->
-          <i class="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-left lightbox-btn btn-prev"></i>
+          <figure class="lightbox-item">
+            <!-- <img src="" alt="" class="lightbox-img">
+            <video src="" class="lightbox-video"></video> -->
+            <figcaption class="lightbox-item-title"></figcaption>
+          </figure>
+          <i class="fa-solid fa-chevron-right lightbox-btn btn-next"></i>
         </div>
       </div>
     </main>
@@ -85,7 +89,7 @@
 			</div>
 		</div>
 
-    <script src="/scripts/utils/api.js"></script>
+    <!-- <script src="/scripts/utils/api.js"></script> -->
     <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/factories/photographerFactory.js"></script>
     <script src="/scripts/factories/lightboxFactory.js"></script>

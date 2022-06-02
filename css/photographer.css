@@ -117,7 +117,8 @@ figcaption{
 #lightbox_modal{
     width: 100%;
     position: fixed;
-    background-color: #b34acd85;
+    background-color: rgba(255, 255, 255, 0.822);
+    backdrop-filter: blur(2px);
     top: 0;
     height: 100%;
     display: flex;
@@ -128,28 +129,41 @@ figcaption{
     display: none;
 }
 .lightbox{
-    background-color: antiquewhite;
     width: 50%;
     height: 70%;
     /* margin: auto; */
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .lightbox-close{
     display: block;
-    align-self: flex-start;
     position: absolute;
     right: 0;
-    padding: 1rem;
+    top: 0;
 }
 .lightbox-item{
     flex-basis: 90%;
+    height: 100%;
+    position: relative;
 }
-.lightbox-image, .lightbox-video{
+.lightbox-img, .lightbox-video{
     display: block;
     width: 100%;
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+.lightbox-btn{
+    font-size: 2rem;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+.lightbox-item-title{
+    position: absolute;
+    bottom: -2rem;
 }
 /* ------------------------------ CONTACT FORM ------------------------------ */
 #contact_modal {
