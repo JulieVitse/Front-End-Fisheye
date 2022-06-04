@@ -1,5 +1,8 @@
 function mediaFactory(data) {
-    const { photographerId, title, likes, id, ...rest } = data;
+    const { photographerId, title, id, ...rest } = data;
+    let mediaIsLiked = false;
+    let likes = data.likes;
+    
 
     //console.log(rest);
     let urlMedia;
@@ -33,7 +36,22 @@ function mediaFactory(data) {
         spanLikes.textContent = likes;
         spanLikes.className = "likes-amount";
         likeIcon.className = "fa-solid fa-heart like-icon";
+
         spanLikes.append(likeIcon);
+
+        likeIcon.addEventListener('click', () => {
+            if (mediaIsLiked) {
+                likes--;
+                mediaIsLiked = false;
+                console.log(likes);
+            } else {
+                likes++;
+                mediaIsLiked = true;
+                console.log(likes);
+            }
+            spanLikes.textContent = likes;
+            spanLikes.append(likeIcon);
+        })
 
         figcaption.textContent = title;
         figcaption.append(spanLikes);
@@ -48,8 +66,6 @@ function mediaFactory(data) {
             throw 'unknown type format';
         }    
     }
-
-    
 
     return { photographerId, title, likes, id, getMediaCardDOM };
 }

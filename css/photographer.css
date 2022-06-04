@@ -113,6 +113,26 @@ figcaption{
     margin-left: .3rem;
     cursor: pointer;
 }
+
+.photos-infos{
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 2rem;
+    padding: 1rem;
+    width: 15%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.total-likes i{
+    margin-left: .5rem;
+}
+.liked{
+    color: var(--color-secondary);
+}
 /* -------------------------------- LIGHTBOX -------------------------------- */
 #lightbox_modal{
     width: 100%;

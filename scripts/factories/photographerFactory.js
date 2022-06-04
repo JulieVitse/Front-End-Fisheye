@@ -15,6 +15,7 @@ function photographerFactory(data, type) {
         const pTagline = document.createElement('p');
         const pPrice = document.createElement('p');
         const articleLink = document.createElement('a');
+        const photographPrice = document.querySelector('.photograph-price');
 
         const headerPhotograph = document.querySelector('.photograph-header');
         
@@ -45,6 +46,7 @@ function photographerFactory(data, type) {
             article.append(articleLink, h3, pTagline, pPrice)
             return (article)
         } else if (type === 'header'){
+            photographPrice.textContent = `${price}€ / jour`;
             headerInfos.append(h1, h3, pTagline);
             headerPhotograph.append(img);
             return (headerInfos)
@@ -53,5 +55,5 @@ function photographerFactory(data, type) {
         }   
     }
 
-    return { name, picture, city, country, tagline, price, id, getUserCardDOM }
+    return { name, portrait, city, country, tagline, price, id, getUserCardDOM }
 }

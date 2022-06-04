@@ -2,6 +2,8 @@
 let mediaFilter = [];
 let id = (new URL(window.location.href)).searchParams.get('id');
 
+
+
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
     const response = await fetch('../../data/photographers.json');
@@ -28,6 +30,7 @@ async function init() {
     const { medias } = await getMedias();
     displayData(photographers);
     displayMedias(medias);
+    displayTotalLikes(medias);
 };
 
 init();
@@ -66,17 +69,22 @@ async function displayMedias(medias) {
         const mediaCardDOM = galleryModel.getMediaCardDOM();
         mediaGallery.appendChild(mediaCardDOM);
         //console.log(media.id);
-    });
-}; 
+    });    
+};
 
-function openLightbox(id){ 
-    const lightbox = createLightbox(mediaFilter, id)
-    lightbox.displayLightbox();
+async function displayTotalLikes(medias) {
+    const infoSpan = document.querySelector('.total-likes');
+    let totalLikes = medias.map(media => media.likes).reduce((likes, amount) => likes + amount);
+
+    infoSpan.innerHTML = totalLikes + `<i class="fa-solid fa-heart"></i>`;
 }
 
+//LIGHTBOX OPEN & CLOSE FUNCTIONS
+function openLightbox(id){ 
+    const lightbox = createLightbox(mediaFilter, id);
+    lightbox.displayLightbox();
+}
 function closeLightbox(){
     const lightboxModal = document.getElementById('lightbox_modal');
-    const lightboxFigure = document.querySelector('.lightbox-item');
     lightboxModal.classList.add('hidden');
-    lightboxFigure.innerHTML = "";
 }
