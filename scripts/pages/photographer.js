@@ -24,16 +24,7 @@ async function getMedias() {
     })
 }
 
-async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    const { medias } = await getMedias();
-    displayData(photographers);
-    displayMedias(medias);
-    displayTotalLikes(medias);
-};
 
-init();
 
 async function displayData(photographers) {
     const photographHeader = document.querySelector(".photograph-header");
@@ -72,12 +63,42 @@ async function displayMedias(medias) {
     });    
 };
 
+function totalLikes(medias) {
+    let total = 0;
+    medias.map(media => {
+        total += media.likes;
+    });
+    return total;
+    /* let totalLikes = medias.map(media => media.likes).reduce((likes, amount) => likes + amount); */
+}
+
 async function displayTotalLikes(medias) {
     const infoSpan = document.querySelector('.total-likes');
-    let totalLikes = medias.map(media => media.likes).reduce((likes, amount) => likes + amount);
+    infoSpan.innerText = totalLikes(medias);
 
-    infoSpan.innerHTML = totalLikes + `<i class="fa-solid fa-heart"></i>`;
 }
+
+/* function likeCounter() {
+    const likeBtn = document.querySelectorAll('.like-icon');
+    const infoSpan = document.querySelector('.total-likes');
+    let likedMedia = false;
+
+    likeBtn.forEach(like => {
+        like.addEventListener('click', () => {
+            if (likedMedia) {
+                let cur_count = parseInt(infoSpan.innerText);
+                infoSpan.innerText = cur_count -1;
+
+                likedMedia = false;
+            } else {
+                let cur_count = parseInt(infoSpan.innerText);
+                infoSpan.innerText = cur_count +1;
+        
+                likedMedia = true;
+            }
+        })
+    });
+} */
 
 //LIGHTBOX OPEN & CLOSE FUNCTIONS
 function openLightbox(id){ 
@@ -88,3 +109,16 @@ function closeLightbox(){
     const lightboxModal = document.getElementById('lightbox_modal');
     lightboxModal.classList.add('hidden');
 }
+
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographers();
+    const { medias } = await getMedias();
+    displayData(photographers);
+    displayMedias(medias);
+    displayTotalLikes(medias);
+    sortMedias(medias);
+    // likeCounter(medias);
+};
+
+init();

@@ -1,9 +1,5 @@
 function mediaFactory(data) {
-    const { photographerId, title, id, ...rest } = data;
-    let mediaIsLiked = false;
-    let likes = data.likes;
-    
-
+    const { photographerId, title, id, likes, ...rest } = data;
     //console.log(rest);
     let urlMedia;
     if (data.video){
@@ -39,19 +35,32 @@ function mediaFactory(data) {
 
         spanLikes.append(likeIcon);
 
+        let mediaIsLiked = false;
+        let currentLikes = likes;
+
         likeIcon.addEventListener('click', () => {
-            if (mediaIsLiked) {
-                likes--;
-                mediaIsLiked = false;
-                console.log(likes);
+            if (mediaIsLiked == false) {
+                //likes--;
+                spanLikes.textContent = currentLikes + 1;
+                likeIcon.classList.add('liked');
+                let totalLikes = document.querySelector('.total-likes');
+                totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
+                spanLikes.append(likeIcon);
+                //mediaIsLiked = false;
+                //console.log(likes);
             } else {
-                likes++;
-                mediaIsLiked = true;
-                console.log(likes);
+                //likes++;
+                spanLikes.textContent = currentLikes;
+                //mediaIsLiked = true;
+                likeIcon.classList.remove('liked');
+                let totalLikes = document.querySelector('.total-likes');
+                totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
+                spanLikes.append(likeIcon);
+                //console.log(likes);
             }
-            spanLikes.textContent = likes;
-            spanLikes.append(likeIcon);
-        })
+            mediaIsLiked = !mediaIsLiked;
+            
+        });
 
         figcaption.textContent = title;
         figcaption.append(spanLikes);
