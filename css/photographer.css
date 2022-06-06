@@ -116,7 +116,7 @@ figure{
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 0 12px var(--color-shadow);
+    /* box-shadow: 0 0 20px var(--color-shadow); */
 }
 figcaption{
     color: var(--color-primary);
