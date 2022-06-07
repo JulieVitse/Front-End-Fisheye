@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
@@ -28,9 +28,9 @@
           <div id="list-wrapper">
             <button id='sort-media-btn' class="btn" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="order by">Popularité</button>
             <ul id="sort-list" class="hidden" aria-labelledby="sort-label" tabindex="-1" role="listbox" aria-activedescendant="sort-by-popularity">
-              <li role="option" id="sort-by-popularity" aria-selected="true" class="focused" tabindex="0">Popularité</li>
-              <li role="option" id="sort-by-date" tabindex="0">Date</li>
-              <li role="option" id="sort-by-title" tabindex="0">Titre</li>
+              <li role="option" id="sort-by-popularity" aria-selected="true" class="focused" tabindex="0" aria-label="trier par popularité">Popularité</li>
+              <li role="option" id="sort-by-date" tabindex="0" aria-label="trier par date">Date</li>
+              <li role="option" id="sort-by-title" tabindex="0" aria-label="trier par titre">Titre</li>
             </ul>
           </div>
         </div>
@@ -38,8 +38,8 @@
         <div class="wrapper media-wrapper"></div>
 
         <div class="photos-infos">
-          <div class="infos-left" aria-label="total likes">
-            <span class="total-likes"></span>
+          <div class="infos-left">
+            <span class="total-likes" aria-label="total likes"></span>
             <i class="fa-solid fa-heart"></i>
           </div>
           <span class="photograph-price" aria-label="photographer price"></span>
@@ -61,7 +61,7 @@
 			<div class="modal">
 				<header>
           <h2 id="contact-title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="close contact form"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="close contact form" alt="close contact form"/>
         </header>
 
 				<form name="contact">

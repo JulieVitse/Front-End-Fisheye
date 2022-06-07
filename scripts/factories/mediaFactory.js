@@ -53,6 +53,7 @@ function mediaFactory(data) {
         spanLikes.setAttribute("aria-label", 'likes');
 
         likeIcon.className = "fa-solid fa-heart like-icon";
+        likeIcon.setAttribute("aria-label", "like button");
         likeIcon.setAttribute("tabindex", "0");
         spanLikes.append(likeIcon);
 
