@@ -1,10 +1,6 @@
 const main = document.querySelector('main');
 const header = document.querySelector('header');
 const modal = document.getElementById("contact_modal");
-
-let galleryLinks = document.getElementsByClassName('gallery-link');
-let linksArray = Array.from(galleryLinks);
-
 const sortButton = document.getElementById('sort-media-btn');
 
 function displayModal() {    
@@ -14,11 +10,18 @@ function displayModal() {
     //prevent background scrolling
     main.style.overflow = "hidden";
     main.style.position = "fixed";
+
+    let galleryLinks = document.querySelectorAll('.gallery-link');
+    let likeIcons = document.querySelectorAll('.like-icon');
+
     //prevent focus on background elements on tab press
-    linksArray.forEach(element => {
-        element.setAttribute("tabindex", "-1");
-    })
     sortButton.setAttribute("tabindex", "-1");
+    galleryLinks.forEach(element => {
+        element.tabIndex = -1;
+    })
+    likeIcons.forEach(element => {
+        element.tabIndex = -1;
+    })
 }
 
 function closeModal() {
@@ -28,11 +31,18 @@ function closeModal() {
     //re-enable page scrolling
     main.style.overflow = "auto";
     main.style.position = "initial";
+
+    let galleryLinks = document.querySelectorAll('.gallery-link');
+    let likeIcons = document.querySelectorAll('.like-icon');
+
     //makes elements focusable again
-    linksArray.forEach(element => {
-        element.removeAttribute("tabindex");
+    sortButton.tabIndex = 0;
+    galleryLinks.forEach(element => {
+        element.tabIndex = 0;
     })
-    sortButton.removeAttribute("tabindex");
+    likeIcons.forEach(element => {
+        element.tabIndex = 0;
+    })
 }
 
 document.addEventListener('keyup', (event) => {
