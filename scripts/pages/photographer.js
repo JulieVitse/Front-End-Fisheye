@@ -1,15 +1,13 @@
-//Mettre le code JavaScript lié à la page photographer.html
 let mediaFilter = [];
+//récupère l'id du photographe actuel depuis l'url
 let id = (new URL(window.location.href)).searchParams.get('id');
 
 
 
 async function getPhotographers() {
-    // Penser à remplacer par les données récupérées dans le json
     const response = await fetch('../../data/photographers.json');
     const data = await response.json();
     
-    // et bien retourner le tableau photographers seulement une fois
     return ({
         photographers: data.photographers
     })
@@ -18,39 +16,29 @@ async function getPhotographers() {
 async function getMedias() {
     const response = await fetch("../../data/photographers.json")
     const data = await response.json();
+    //filtre et store dans un array les média selon l'id du photographe
     mediaFilter = data.media.filter((e) => e.photographerId == id);
     return ({
-        medias: mediaFilter//data.media
+        medias: mediaFilter
     })
 }
 
 
-
+// Affiche les infos du photographe dans le header, créé depuis photographerFactory.js
 async function displayData(photographers) {
     const photographHeader = document.querySelector(".photograph-header");
+    //récupère et store l'id de chaque photographe
     const photographer = photographers.find(photographer => photographer.id == id);
-    
+    //affiche les infos correspondant au photographe selon son id
     const photographerModel = photographerFactory(photographer, 'header');
     const userCardDOM = photographerModel.getUserCardDOM();
     photographHeader.appendChild(userCardDOM);
-
+    //affiche le nom correspondant au photographe dans la modale de formulaire
     const contactName = document.querySelector('h2');      
     contactName.innerHTML += '<br>' + photographer.name;
-
-    /* photographers.forEach((photographer) => {
-        if(photographer.id == id){
-            
-        const photographerModel = photographerFactory(photographer, 'header');
-        const userCardDOM = photographerModel.getUserCardDOM();
-        photographHeader.appendChild(userCardDOM);
-
-        const contactName = document.querySelector('h2');      
-        contactName.innerHTML += '<br>' + photographer.name;
-        }
-       
-    }); */
 };
 
+//Affiche la galerie de chaque photographe, créée depuis mediaFactory.js
 async function displayMedias(medias) {
     const mediaGallery = document.querySelector('.media-wrapper');
 
@@ -59,66 +47,48 @@ async function displayMedias(medias) {
         const galleryModel = mediaFactory(media);
         const mediaCardDOM = galleryModel.getMediaCardDOM();
         mediaGallery.appendChild(mediaCardDOM);
-        //console.log(media.id);
     });    
 };
 
+// Calcule la somme des likes des médias
 function totalLikes(medias) {
     let total = 0;
     medias.map(media => {
         total += media.likes;
     });
     return total;
-    /* let totalLikes = medias.map(media => media.likes).reduce((likes, amount) => likes + amount); */
 }
-
+// Affiche le nombre total de likes d'un photographe
 async function displayTotalLikes(medias) {
     const infoSpan = document.querySelector('.total-likes');
     infoSpan.innerText = totalLikes(medias);
-
 }
 
-/* function likeCounter() {
-    const likeBtn = document.querySelectorAll('.like-icon');
-    const infoSpan = document.querySelector('.total-likes');
-    let likedMedia = false;
-
-    likeBtn.forEach(like => {
-        like.addEventListener('click', () => {
-            if (likedMedia) {
-                let cur_count = parseInt(infoSpan.innerText);
-                infoSpan.innerText = cur_count -1;
-
-                likedMedia = false;
-            } else {
-                let cur_count = parseInt(infoSpan.innerText);
-                infoSpan.innerText = cur_count +1;
-        
-                likedMedia = true;
-            }
-        })
-    });
-} */
-
 //LIGHTBOX OPEN & CLOSE FUNCTIONS
-function openLightbox(id){ 
+function openLightbox(id){ //appelée dans mediaFactory.js
+    const lightboxModal = document.getElementById('lightbox_modal');
+    lightboxModal.setAttribute("aria-hidden", 'false');
     const lightbox = createLightbox(mediaFilter, id);
     lightbox.displayLightbox();
 }
-function closeLightbox(){
+function closeLightbox(){ //appelée dans le html onclick & dans lightboxFactory.js
     const lightboxModal = document.getElementById('lightbox_modal');
     lightboxModal.classList.add('hidden');
+    lightboxModal.setAttribute("aria-hidden", 'true');
+    const lightbox = document.querySelector('.lightbox-item');
+    lightbox.innerHTML = "";
 }
 
+//initialise toutes les fonctions
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
+    // Récupère les datas des médias
     const { medias } = await getMedias();
     displayData(photographers);
     displayMedias(medias);
     displayTotalLikes(medias);
     sortMedias(medias);
-    // likeCounter(medias);
 };
-
+//lance l'init
 init();

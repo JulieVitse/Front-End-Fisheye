@@ -1,4 +1,5 @@
 function createLightbox(medias, id) {
+    //récupère et store l'index de chaque media selon son id
     let photoID = medias.findIndex(media => media.id === id);
 
     function displayLightbox() {
@@ -6,61 +7,86 @@ function createLightbox(medias, id) {
         const lightboxModal = document.getElementById('lightbox_modal');
         const lightbox = document.querySelector('.lightbox');
         const lightboxFigure = document.querySelector('.lightbox-item');
-        const mediaTitle = document.querySelector('.lightbox-item-title');
-    
+        //lightbox structure elements to create
+        const mediaTitle = document.createElement('figcaption');
+        mediaTitle.className = "lightbox-item-title";
         const lightboxVideo = document.createElement("video");
         lightboxVideo.className = "lightbox-video";
         const lightboxImage = document.createElement('img');
         lightboxImage.className = "lightbox-img";
-
         //lightbox buttons
         const btnPrev = document.querySelector('.btn-prev');
         const btnNext = document.querySelector('.btn-next');
-
-        lightbox.setAttribute("aria-label", "Image closeup view");
+        //removes display none
         lightboxModal.classList.remove('hidden');
-        lightboxFigure.append(mediaTitle);
 
+        //gestion de l'affichage des médias selon leur type
         if (medias[photoID].image) {
-
             lightboxImage.setAttribute("alt", `${medias[photoID].title}, closeup view`);
             lightboxImage.setAttribute("src", `../assets/medias/${medias[photoID].image}`);
             mediaTitle.textContent = `${medias[photoID].title}`;
           
-            lightboxFigure.append(lightboxImage); 
+            lightboxFigure.append(lightboxImage, mediaTitle); 
         }
-
         if (medias[photoID].video) {
-
             lightboxVideo.setAttribute("alt", `${medias[photoID].title}`);
             lightboxVideo.setAttribute("src", `../assets/medias/${medias[photoID].video}`);
             lightboxVideo.setAttribute("controls", true);
             mediaTitle.textContent = `${medias[photoID].title}`;
 
-            lightboxFigure.append(lightboxVideo);  
+            lightboxFigure.append(lightboxVideo, mediaTitle);  
         }
-
+        //events au clic sur les flèches droites et gauche
         btnNext.addEventListener('click', () => {
+            //si l'index est inférieur à la longueur totale du tableau -1, passe à l'index suivant
             if (photoID < medias.length - 1) {
                 photoID++;
-                lightboxNavigation();
-                console.log(photoID);
+            //sinon retourne au début
             } else {
                 photoID = 0;
-                lightboxNavigation();
             }
+            lightboxNavigation();
         })
 
         btnPrev.addEventListener('click', () => {
+            //si l'index est supérieur à 0, va à l'index précédent
             if (photoID > 0) {
                 photoID--;
-                lightboxNavigation();
+            //sinon va au dernier index
             } else {
                 photoID = medias.length - 1;
-                lightboxNavigation();
             }
+            lightboxNavigation();
         })
-
+        //events pour la navigation au clavier dans la lightbox
+        document.addEventListener('keyup', (event) => {
+            //vérifie que la lightbox est ouverte
+            if (lightboxModal.ariaHidden === "false") {
+                switch (event.key) {
+                    case 'ArrowLeft':
+                        if (photoID > 0) {
+                            photoID--;
+                        } else {
+                            photoID = medias.length - 1;
+                        }
+                        lightboxNavigation();
+                        break;
+                    case 'ArrowRight':
+                        if (photoID < medias.length - 1) {
+                            photoID++;
+                        } else {
+                            photoID = 0;
+                        }
+                        lightboxNavigation();
+                        break;
+                    case 'Escape':
+                        closeLightbox(); //fonction définie dans photographer.js
+                        break;
+                }
+                event.preventDefault();
+            }    
+        });
+        //gestion des médias selon leur type pendant la navigation dans la lightbox
         function lightboxNavigation () {
             mediaTitle.textContent = `${medias[photoID].title}`;
             if (medias[photoID].image) {
@@ -82,7 +108,6 @@ function createLightbox(medias, id) {
                 lightboxVideo.setAttribute("controls", true);
             }
         }
-        
     }
 return { displayLightbox };
 }

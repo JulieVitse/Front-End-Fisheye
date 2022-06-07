@@ -24,74 +24,69 @@
 
       <section class="photographer-gallery">
         <div class="wrapper sort-wrapper">
-          <h4 class="sort-label">Trier par</h4>
+          <label for="sort-list" id="sort-label">Trier par</label>
           <div id="list-wrapper">
-            <button id='sort-media-btn' class="btn" role="button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="sort-label">Popularité</button>
-            <ul id="sort-list" class="hidden" aria-labelledby="sort-media" tabindex="-1" role="listbox" aria-activedescendant="sort-by-popularity">
+            <button id='sort-media-btn' class="btn" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="order by">Popularité</button>
+            <ul id="sort-list" class="hidden" aria-labelledby="sort-label" tabindex="-1" role="listbox" aria-activedescendant="sort-by-popularity">
               <li role="option" id="sort-by-popularity" aria-selected="true" class="focused" tabindex="0">Popularité</li>
               <li role="option" id="sort-by-date" tabindex="0">Date</li>
               <li role="option" id="sort-by-title" tabindex="0">Titre</li>
             </ul>
           </div>
-          
         </div>
 
         <div class="wrapper media-wrapper"></div>
 
         <div class="photos-infos">
-          <div class="infos-left">
+          <div class="infos-left" aria-label="total likes">
             <span class="total-likes"></span>
             <i class="fa-solid fa-heart"></i>
           </div>
-          <span class="photograph-price"></span>
+          <span class="photograph-price" aria-label="photographer price"></span>
         </div>
       </section>
 
-      <div id="lightbox_modal" aria-hidden="true" role="dialog" class="hidden">
+      <div id="lightbox_modal" aria-hidden="true" role="dialog" class="hidden" aria-label="image closeup view" tabindex="-1">
         <div class="lightbox">
-          <i class="fa-solid fa-xmark lightbox-close lightbox-btn" onclick="closeLightbox()"></i>
-          <!-- <img src="assets/icons/close.svg" class="lightbox-close" onclick="closeLightbox()" /> -->
-          <i class="fa-solid fa-chevron-left lightbox-btn btn-prev"></i>
+          <i class="fa-solid fa-xmark lightbox-close lightbox-btn" onclick="closeLightbox()" role="button" aria-label="close dialog"></i>
+          <i class="fa-solid fa-chevron-left lightbox-btn btn-prev" role="link" aria-label="previous image"></i>
           <figure class="lightbox-item">
-            <!-- <img src="" alt="" class="lightbox-img">
-            <video src="" class="lightbox-video"></video> -->
-            <figcaption class="lightbox-item-title"></figcaption>
           </figure>
-          <i class="fa-solid fa-chevron-right lightbox-btn btn-next"></i>
+          <i class="fa-solid fa-chevron-right lightbox-btn btn-next" role="link" aria-label="next image"></i>
         </div>
       </div>
     </main>
 
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-labelledby="contact-title" aria-modal="true">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="contact-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="close contact form"/>
         </header>
 
 				<form name="contact">
 
 					<div class="formData">
             <label for="name">Prénom</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" aria-labelledby="name" tabindex="0">
           </div>
 
           <div class="formData">
             <label for="lastname">Nom</label>
-            <input type="text" id="lastname" name="lastname">
+            <input type="text" id="lastname" name="lastname" aria-labelledby="lastname" tabindex="0">
           </div>
 
           <div class="formData">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" aria-labelledby="email" tabindex="0">
           </div>
 
           <div class="formData">
             <label for="message">Votre Message</label>
-            <textarea name="message" id="message" rows="10"></textarea>
+            <textarea name="message" id="message" rows="10" aria-labelledby="message" tabindex="0"></textarea>
           </div>
 
-          <button class="contact_button btn">Envoyer</button>
+          <button class="contact_button btn" aria-label="send" tabindex="0">Envoyer</button>
 				</form>
         
 			</div>

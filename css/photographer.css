@@ -1,6 +1,7 @@
 :root{
     --color-primary: #901C1C;
     --color-secondary: #D3573C;
+    --color-tertiary: #DB8876;
     --color-shadow: rgba(0, 0, 0, 0.25);
 }
 
@@ -130,7 +131,7 @@ figcaption{
 }
 
 .photos-infos{
-    background-color: #DB8876;
+    background-color: var(--color-tertiary);
     position: fixed;
     bottom: 0;
     right: 0;
@@ -242,12 +243,13 @@ figcaption{
     box-shadow: 0 4px 12px var(--color-shadow);
 }
 .contact_button:hover{
-    background-color: var(--color-secondary);
+    background-color: var(--color-tertiary);
+    color: #000;
 }
 
 .modal {
     border-radius: 5px;
-    background-color: #DB8876;
+    background-color: var(--color-tertiary);
     width: 55%;
     display: flex;
     flex-direction: column;
