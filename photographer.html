@@ -12,7 +12,7 @@
   <body>
     <!-- ---------------------------- HEADER START ----------------------------- -->
     <header>
-      <a href="index.html">
+      <a href="index.html" id="logo-link">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
@@ -71,9 +71,9 @@
     <!-- ------------------------------ MAIN END ------------------------------- -->
 
     <!-- ------------------------- contact modal start ------------------------- -->
-    <div id="contact_modal" role="dialog" aria-labelledby="contact-title" aria-modal="true">
+    <div id="contact_modal" role="dialog" aria-labelledby="contact-title" aria-modal="true" aria-hidden="true">
       <!-- ---------------------------- modal content ---------------------------- -->
-			<div class="modal">
+			<div class="modal" aria-modal="true" role="dialog">
 				<header>
           <h2 id="contact-title">Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" role="button" aria-label="close contact form" alt="close contact form"/>
