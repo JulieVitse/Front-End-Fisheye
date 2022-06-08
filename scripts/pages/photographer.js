@@ -1,19 +1,20 @@
+// créé un array pour stocker les médias
 let mediaFilter = [];
 //récupère l'id du photographe actuel depuis l'url
 let id = (new URL(window.location.href)).searchParams.get('id');
 
-
-
 async function getPhotographers() {
+    //récupère les datas depuis le json
     const response = await fetch('../../data/photographers.json');
     const data = await response.json();
-    
+    //retourne les datas des photographes
     return ({
         photographers: data.photographers
     })
 }
 
 async function getMedias() {
+    //récupère les datas depuis le json
     const response = await fetch("../../data/photographers.json")
     const data = await response.json();
     //filtre et store dans un array les média selon l'id du photographe
@@ -22,7 +23,6 @@ async function getMedias() {
         medias: mediaFilter
     })
 }
-
 
 // Affiche les infos du photographe dans le header, créé depuis photographerFactory.js
 async function displayData(photographers) {
@@ -85,6 +85,7 @@ async function init() {
     const { photographers } = await getPhotographers();
     // Récupère les datas des médias
     const { medias } = await getMedias();
+    // lance les fonctions
     displayData(photographers);
     displayMedias(medias);
     displayTotalLikes(medias);

@@ -22,12 +22,10 @@ function mediaFactory(data) {
         //ajout des attributs et classe des vidéos
         videoMedia.setAttribute("src", fullUrl);
         videoMedia.setAttribute("type", "video/mp4");
-        //videoMedia.setAttribute("onclick", `openLightbox(${id})`);
         videoMedia.className = "gallery-vid";
         //ajout des attributs et classe des images
         img.setAttribute("src", fullUrl);
         img.setAttribute("alt", title);
-        //img.setAttribute("onclick", `openLightbox(${id})`);
         img.className = "gallery-img";
         //ajout des attributs et classe des liens images
         mediaLink.setAttribute("href", fullUrl);
@@ -65,20 +63,20 @@ function mediaFactory(data) {
         let currentLikes = likes;
 
         likeIcon.addEventListener('click', () => {
-            if (mediaIsLiked == false) {
-                spanLikes.textContent = currentLikes + 1;
-                likeIcon.classList.add('liked');
-                let totalLikes = document.querySelector('.total-likes');
-                totalLikes.textContent = parseInt(totalLikes.textContent) + 1;
-                spanLikes.append(likeIcon);
-            } else {
-                spanLikes.textContent = currentLikes;
-                likeIcon.classList.remove('liked');
-                let totalLikes = document.querySelector('.total-likes');
-                totalLikes.textContent = parseInt(totalLikes.textContent) - 1;
-                spanLikes.append(likeIcon);
+            if (mediaIsLiked == false) { //variable définie ligne 62 (retourne false de base)
+                spanLikes.textContent = currentLikes + 1; //ajoute 1 au nombre de likes correspondant à l'icône cliquée
+                likeIcon.classList.add('liked'); //change la couleur de l'icône
+                let totalLikes = document.querySelector('.total-likes'); //récupère l'élément qui affiche les likes total
+                totalLikes.textContent = parseInt(totalLikes.textContent) + 1; //passe son contenu textuel en integer et y ajoute 1
+                spanLikes.append(likeIcon); //place l'icône à côté du nombre de likes
+            } else { //si l'icône a déjà été cliquée une fois
+                spanLikes.textContent = currentLikes; //remplace les likes par leur nombre original
+                likeIcon.classList.remove('liked'); //remet la couleur de base
+                let totalLikes = document.querySelector('.total-likes'); //récupère l'élément qui affiche les likes total
+                totalLikes.textContent = parseInt(totalLikes.textContent) - 1; //passe son contenu textuel en integer et y enlève 1
+                spanLikes.append(likeIcon); //place l'icône à côté du nombre de likes
             }
-            mediaIsLiked = !mediaIsLiked;
+            mediaIsLiked = !mediaIsLiked; //passe à true
         });
         //gestion des likes au clavier
         likeIcon.addEventListener('keyup', (e) => {
@@ -99,8 +97,6 @@ function mediaFactory(data) {
                 mediaIsLiked = !mediaIsLiked;
             }
         });
-
-        
 
         //gestion de l'affichage des médias selon leur type
         if (data.image){

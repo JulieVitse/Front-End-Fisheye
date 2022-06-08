@@ -10,19 +10,23 @@
   </head>
 
   <body>
+    <!-- ---------------------------- HEADER START ----------------------------- -->
     <header>
       <a href="index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
-
+    <!-- ----------------------------- HEADER END ------------------------------ -->
+    <!-- ----------------------------- MAIN START ------------------------------ -->
     <main id="main">
-
+      <!-- --------------------- banner infos start ---------------------- -->
       <section class="photograph-header">
         <button class="contact_button" onclick="displayModal()" aria-label="Contact Me">Contactez-moi</button>
       </section>
-
+      <!-- -------------------------- banner infos end --------------------------- -->
+      <!-- ---------------------------- gallery start ---------------------------- -->
       <section class="photographer-gallery">
+        <!-- ------------------------- sorting list start -------------------------- -->
         <div class="wrapper sort-wrapper">
           <label for="sort-list" id="sort-label">Trier par</label>
           <div id="list-wrapper">
@@ -34,18 +38,25 @@
             </ul>
           </div>
         </div>
+        <!-- -------------------------- sorting list end --------------------------- -->
 
+        <!-- ------------------------- media gallery start ------------------------- -->
         <div class="wrapper media-wrapper"></div>
+        <!-- -------------------------- media gallery end -------------------------- -->
 
+        <!-- ------------------------ infos likes & prices start ------------------------- -->
         <div class="photos-infos">
           <div class="infos-left">
             <span class="total-likes" aria-label="total likes"></span>
-            <i class="fa-solid fa-heart"></i>
+            <i class="fa-solid fa-heart" aria-label="heart icon"></i>
           </div>
           <span class="photograph-price" aria-label="photographer price"></span>
         </div>
+        <!-- ---------------------- infos likes & prices end ----------------------- -->
       </section>
+      <!-- ----------------------------- gallery end ----------------------------- -->
 
+      <!-- --------------------------- lightbox start ---------------------------- -->
       <div id="lightbox_modal" aria-hidden="true" role="dialog" class="hidden" aria-label="image closeup view" tabindex="-1">
         <div class="lightbox">
           <i class="fa-solid fa-xmark lightbox-close lightbox-btn" onclick="closeLightbox()" role="button" aria-label="close dialog"></i>
@@ -55,9 +66,13 @@
           <i class="fa-solid fa-chevron-right lightbox-btn btn-next" role="link" aria-label="next image"></i>
         </div>
       </div>
+      <!-- ---------------------------- lightbox end ----------------------------- -->
     </main>
+    <!-- ------------------------------ MAIN END ------------------------------- -->
 
+    <!-- ------------------------- contact modal start ------------------------- -->
     <div id="contact_modal" role="dialog" aria-labelledby="contact-title" aria-modal="true">
+      <!-- ---------------------------- modal content ---------------------------- -->
 			<div class="modal">
 				<header>
           <h2 id="contact-title">Contactez-moi</h2>
@@ -90,14 +105,19 @@
 				</form>
         
 			</div>
+      <!-- -------------------------- modal content end -------------------------- -->
 		</div>
+    <!-- -------------------------- contact modal end -------------------------- -->
 
-    <!-- <script src="/scripts/utils/api.js"></script> -->
+    <!-- ------------------------------- scripts ------------------------------- -->
+    <!-- factories -->
     <script src="/scripts/factories/mediaFactory.js"></script>
     <script src="/scripts/factories/photographerFactory.js"></script>
     <script src="/scripts/factories/lightboxFactory.js"></script>
+    <!-- page -->
     <script src="/scripts/pages/photographer.js"></script>
-    <script src="scripts/utils/sortComponent.js"></script>
+    <!-- utilities -->
+    <script src="/scripts/utils/sortComponent.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
