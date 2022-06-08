@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 function sortMedias(medias) {
   //sorting list elements
   const sortButton = document.getElementById('sort-media-btn');

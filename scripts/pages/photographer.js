@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+
 // créé un array pour stocker les médias
 let mediaFilter = [];
 //récupère l'id du photographe actuel depuis l'url
@@ -36,7 +39,7 @@ async function displayData(photographers) {
     //affiche le nom correspondant au photographe dans la modale de formulaire
     const contactName = document.querySelector('h2');      
     contactName.innerHTML += '<br>' + photographer.name;
-};
+}
 
 //Affiche la galerie de chaque photographe, créée depuis mediaFactory.js
 async function displayMedias(medias) {
@@ -48,7 +51,7 @@ async function displayMedias(medias) {
         const mediaCardDOM = galleryModel.getMediaCardDOM();
         mediaGallery.appendChild(mediaCardDOM);
     });    
-};
+}
 
 // Calcule la somme des likes des médias
 function totalLikes(medias) {
@@ -90,6 +93,6 @@ async function init() {
     displayMedias(medias);
     displayTotalLikes(medias);
     sortMedias(medias);
-};
+}
 //lance l'init
 init();

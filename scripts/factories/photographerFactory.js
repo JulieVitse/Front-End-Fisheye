@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function photographerFactory(data, type) {
     const { name, portrait, city, country, tagline, price, id } = data;
 

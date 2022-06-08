@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 function mediaFactory(data) {
     const { photographerId, title, id, likes, ...rest } = data;
-    //console.log(rest);
+    console.log(rest);
     // défini l'url à utiliser selon le type de média
     let urlMedia;
     if (data.video){
