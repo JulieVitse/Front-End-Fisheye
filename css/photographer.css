@@ -167,7 +167,7 @@ figcaption{
     display: none;
 }
 .lightbox{
-    width: 60%;
+    width: auto;
     height: 90%;
     /* margin: auto; */
     display: flex;
@@ -188,12 +188,13 @@ figcaption{
 }
 .lightbox-img, .lightbox-video{
     display: block;
-    width: 100%;
-    object-fit: cover;
+    margin: 0 1rem;
+    /* width: 100%; */
+    /* object-fit: cover; */
     /* aspect-ratio: 1 / 1; */
     height: 100%;
-    position: absolute;
-    top: 0;
+    /* position: absolute; */
+    /* top: 0; */
     border-radius: 5px;
 }
 .lightbox-btn{

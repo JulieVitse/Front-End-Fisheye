@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 function createLightbox(medias, id) {
     //récupère et store l'index de chaque media selon son id
     let photoID = medias.findIndex(media => media.id === id);
@@ -5,7 +7,6 @@ function createLightbox(medias, id) {
     function displayLightbox() {
         //lightbox structure elements
         const lightboxModal = document.getElementById('lightbox_modal');
-        const lightbox = document.querySelector('.lightbox');
         const lightboxFigure = document.querySelector('.lightbox-item');
         //lightbox structure elements to create
         const mediaTitle = document.createElement('figcaption');
@@ -29,7 +30,7 @@ function createLightbox(medias, id) {
             lightboxFigure.append(lightboxImage, mediaTitle); 
         }
         if (medias[photoID].video) {
-            lightboxVideo.setAttribute("alt", `${medias[photoID].title}`);
+            lightboxVideo.setAttribute("alt", `${medias[photoID].title}, closeup view`);
             lightboxVideo.setAttribute("src", `../assets/medias/${medias[photoID].video}`);
             lightboxVideo.setAttribute("controls", true);
             mediaTitle.textContent = `${medias[photoID].title}`;

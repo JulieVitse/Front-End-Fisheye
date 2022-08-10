@@ -24,7 +24,7 @@ function photographerFactory(data, type) {
 
         // ajout des attributs, classe et contenu de chaque élémént
         img.setAttribute("src", picture)
-        img.setAttribute("alt", " ")
+        img.setAttribute("alt", `portrait de ${name}`)
         img.className = "photographer-picture"
 
         h1.textContent = name;

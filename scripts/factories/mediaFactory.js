@@ -18,7 +18,7 @@ function mediaFactory(data) {
         const img = document.createElement('img');
         const figcaption = document.createElement('figcaption');
         const spanLikes = document.createElement('span');
-        const likeIcon = document.createElement('i');
+        const likeIcon = document.createElement('span');
         const videoMedia = document.createElement('video');
         const mediaLink = document.createElement('a');
         //ajout des attributs et classe des vidéos
@@ -27,11 +27,11 @@ function mediaFactory(data) {
         videoMedia.className = "gallery-vid";
         //ajout des attributs et classe des images
         img.setAttribute("src", fullUrl);
-        img.setAttribute("alt", title);
+        img.setAttribute("alt", `${title} photo`);
         img.className = "gallery-img";
         //ajout des attributs et classe des liens images
         mediaLink.setAttribute("href", fullUrl);
-        mediaLink.setAttribute("aria-label", `${title}, closeup view`);
+        mediaLink.setAttribute("aria-label", `open ${title} in lightbox`);
         mediaLink.className = "gallery-link";
 
         //ouvre la lightbox au clic sur lien image
@@ -50,10 +50,11 @@ function mediaFactory(data) {
         //affiche le titre et les likes de chaque média
         spanLikes.textContent = likes;
         spanLikes.className = "likes-amount";
-        spanLikes.setAttribute("aria-label", 'likes');
+        spanLikes.setAttribute("aria-label", 'amount of likes');
 
         likeIcon.className = "fa-solid fa-heart like-icon";
-        likeIcon.setAttribute("aria-label", "like button");
+        likeIcon.setAttribute("role", "button");
+        likeIcon.setAttribute("aria-label", "increase like by one");
         likeIcon.setAttribute("tabindex", "0");
         spanLikes.append(likeIcon);
 
