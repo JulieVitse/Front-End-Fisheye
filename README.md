@@ -12,7 +12,7 @@
   * Smooth and functional navigation between the different photographs' profil pages
   * Creation of a contact modal
   * Creation of a LightBox component to display the different provided medias
-  * Managing the "Like" function on the medias
+  * Managing the "Like" & "Sort" functionalities for the medias
 
 ## Getting Started
 
@@ -22,5 +22,5 @@ No pre-requisites needed. Just fork the repo or download the code in ZIP form.
 
 ### Executing program
 
-Just click on the index.html file, nothing else needed.
+Open the folder in VSCode or your preferred editor, then using a Live Server extension, start up the live server.
 
